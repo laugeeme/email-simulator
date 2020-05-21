@@ -13,8 +13,20 @@ function startApp() {
 
 //verify if there is some text
 function validateInput() {
-    //validates the length of the text and that the field is not empty
+  //validates the length of the text and that the field is not empty
+  verifyLength(this);
+}
 
+
+
+function verifyLength(field) {
+  if(field.value.length  > 0){
+    field.style.borderBottomColor = 'green';
+    field.classList.remove('error');
+  } else{
+    field.style.borderBottomColor = 'red';
+    field.classList.add('error');
+  }
 }
 
 //event
