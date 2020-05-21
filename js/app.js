@@ -5,6 +5,8 @@ const email = document.getElementById('email');
 const subject = document.getElementById('asunto');
 const msj = document.getElementById('mensaje');
 const sendBtn = document.getElementById('enviar');
+const sendForm = document.getElementById('enviar-mail');
+const resetBtn = document.getElementById('resetBtn');
 
 //disable sendBtn at app started
 function startApp() {
@@ -62,17 +64,22 @@ function sendEmail(e) {
   sendGif.style.display = 'block';
 
   //hidden spinner and shows sent gif
-    setTimeout(function (){
-        spinnerGif.style.display = 'none';
-        
-        document.querySelector('#loaders').appendChild( sendGif);
-        setTimeout(function(){
-            sendGif.remove();
-             
-        }, 5000);
-    }, 3000);
+  setTimeout(function () {
+    spinnerGif.style.display = 'none';
 
+    document.querySelector('#loaders').appendChild(sendGif);
+    setTimeout(function () {
+      sendGif.remove();
+      sendForm.reset();
+    }, 5000);
+  }, 3000);
 
+  e.preventDefault();
+}
+
+//reset form
+function resetForm(e) {
+  sendForm.reset();
   e.preventDefault();
 }
 
@@ -82,3 +89,4 @@ email.addEventListener('blur', validateInput);
 subject.addEventListener('blur', validateInput);
 msj.addEventListener('blur', validateInput);
 sendBtn.addEventListener('click', sendEmail);
+resetBtn.addEventListener('click', resetForm);
