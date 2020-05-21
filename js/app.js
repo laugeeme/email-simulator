@@ -8,12 +8,12 @@ const sendBtn = document.getElementById('enviar');
 const sendForm = document.getElementById('enviar-mail');
 const resetBtn = document.getElementById('resetBtn');
 
-//disable sendBtn at app started
+//disable sendBtn when starts app
 function startApp() {
   sendBtn.disabled = true;
 }
 
-//verify if there is some text
+//verify if there is some text in inputs
 function validateInput() {
   //validates the length of the text and that the field is not empty
   verifyLength(this);
