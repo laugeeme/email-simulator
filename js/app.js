@@ -15,19 +15,38 @@ function startApp() {
 function validateInput() {
   //validates the length of the text and that the field is not empty
   verifyLength(this);
+
+
+  //validate email format
+  if(this.type === 'email'){
+      validateEmail();
+  }
+
+  let errors = document.querySelectorAll('.error');
+
+  if (email.value !== '' && subject.value !== '' && msj.value !== '') {
+    if (errors.length === 0) {
+      sendBtn.disabled = false;
+    }
+  }
 }
 
-
-
 function verifyLength(field) {
-  if(field.value.length  > 0){
+  if (field.value.length > 0) {
     field.style.borderBottomColor = 'green';
     field.classList.remove('error');
-  } else{
+  } else {
     field.style.borderBottomColor = 'red';
     field.classList.add('error');
   }
 }
+
+
+function validateEmail(){
+
+}
+
+
 
 //event
 document.addEventListener('DOMContentLoaded', startApp);
