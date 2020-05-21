@@ -16,10 +16,9 @@ function validateInput() {
   //validates the length of the text and that the field is not empty
   verifyLength(this);
 
-
   //validate email format
-  if(this.type === 'email'){
-      validateEmail();
+  if (this.type === 'email') {
+    validateEmail(this);
   }
 
   let errors = document.querySelectorAll('.error');
@@ -41,12 +40,16 @@ function verifyLength(field) {
   }
 }
 
-
-function validateEmail(){
-
+function validateEmail(field) {
+  const msj = field.value;
+  if (msj.indexOf('@') !== -1) {
+    field.style.borderBottomColor = 'green';
+    field.classList.remove('error');
+  } else {
+    field.style.borderBottomColor = 'red';
+    field.classList.add('error');
+  }
 }
-
-
 
 //event
 document.addEventListener('DOMContentLoaded', startApp);
