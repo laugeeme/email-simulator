@@ -51,8 +51,34 @@ function validateEmail(field) {
   }
 }
 
+function sendEmail(e) {
+  //spinner appears on click from send button
+  const spinnerGif = document.querySelector('#spinner');
+  spinnerGif.style.display = 'block';
+
+  //create sent gif
+  const sendGif = document.createElement('img');
+  sendGif.src = 'img/mail.gif';
+  sendGif.style.display = 'block';
+
+  //hidden spinner and shows sent gif
+    setTimeout(function (){
+        spinnerGif.style.display = 'none';
+        
+        document.querySelector('#loaders').appendChild( sendGif);
+        setTimeout(function(){
+            sendGif.remove();
+             
+        }, 5000);
+    }, 3000);
+
+
+  e.preventDefault();
+}
+
 //event
 document.addEventListener('DOMContentLoaded', startApp);
 email.addEventListener('blur', validateInput);
 subject.addEventListener('blur', validateInput);
 msj.addEventListener('blur', validateInput);
+sendBtn.addEventListener('click', sendEmail);
